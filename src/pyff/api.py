@@ -21,6 +21,11 @@ import requests
 import threading
 import pytz
 
+
+#from guppy import hpy
+#import code
+#hp=hpy()
+
 log = get_log(__name__)
 
 
@@ -386,6 +391,10 @@ def launch_memory_usage_server(port=9002):
 
 
 def mkapp(*args, **kwargs):
+    print(f"mkapp entry args: {args}")
+    log.debug(f"mkapp entry {args}")
+    #hp.setrelheap()
+
     md = kwargs.pop('md', None)
     if md is None:
         md = MDRepository()
@@ -457,4 +466,8 @@ def mkapp(*args, **kwargs):
                                            max_instances=1,
                                            timezone=pytz.utc)
 
-        return ctx.make_wsgi_app()
+        #code.interact(local=dict(globals(), **locals()))
+        r = ctx.make_wsgi_app()
+        log.debug("mkapp entry")
+
+        return r

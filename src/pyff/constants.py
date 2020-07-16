@@ -152,7 +152,7 @@ class Config(object):
     request_cache_time = setting("request_cache_time", 300, as_int)
     request_cache_backend = setting("request_cache_backend", 'memory', as_string)
     request_override_encoding = setting("request_override_encoding", "utf8")  # set to non to enable chardet guessing
-    devel_memory_profile = setting("devel_memory_profile", False, as_bool)
+    devel_memory_profile = setting("devel_memory_profile", True, as_bool)
     devel_write_xml_to_file = setting("devel_write_xml_to_file", False, as_bool)
     ds_template = setting("ds_template", "ds.html")
     redis_host = setting("redis_host", "localhost")

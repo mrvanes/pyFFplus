@@ -71,6 +71,11 @@ from .i18n import language
 from . import samlmd
 import six
 
+#from guppy import hpy
+#import code
+#hp=hpy()
+
+
 if six.PY2:
     from cgi import escape
     _ = language.ugettext
@@ -611,6 +616,8 @@ def main():
     """
     The main entrypoint for the pyffd command.
     """
+    #hp.setrelheap()
+
     args = parse_options("pyffd",
                          __doc__,
                          'hP:p:H:CfaA:l:Rm:',
@@ -731,12 +738,14 @@ def main():
     engine.signals.subscribe()
     try:
         engine.start()
+        #code.interact(local=dict(globals(), **locals()))
     except Exception as ex:
         logging.debug(traceback.format_exc())
         logging.error(ex)
         sys.exit(1)
     else:
         engine.block()
+
 
 
 if __name__ == "__main__":
